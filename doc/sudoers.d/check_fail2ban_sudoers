@@ -3,7 +3,7 @@
 Defaults !requiretty 
 
 Runas_Alias USR_ROOT = root                    
-User_Alias NAGIOS = nagios
+User_Alias NAGIOS = nagios,nrpe
 Cmnd_Alias FAIL2BAN = /usr/bin/fail2ban-client status *
                                                
 NAGIOS ALL=(USR_ROOT) NOPASSWD: FAIL2BAN       

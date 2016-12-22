@@ -40,7 +40,6 @@
 	```
 	cd /opt/
 	git clone https://github.com/chalbersma/nagios_fail2ban.git
-	chown -R nagios:nagios /opt/nagios_fail2ban
 	```
 ### Setup
 
