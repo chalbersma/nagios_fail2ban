@@ -1,5 +1,7 @@
 # Fail2 ban Sudoers File
 
+Defaults !requiretty 
+
 Runas_Alias USR_ROOT = root                    
 User_Alias NAGIOS = nagios
 Cmnd_Alias FAIL2BAN = /usr/bin/fail2ban-client status *
