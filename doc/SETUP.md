@@ -42,6 +42,7 @@
 	git clone https://github.com/chalbersma/nagios_fail2ban.git
 	chown -R nagios:nagios /opt/nagios_fail2ban
 	```
+### Setup
 
 * Add the Following to you Command File (or add as a new File) if you're using NRPE:
 

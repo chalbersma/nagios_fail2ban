@@ -49,7 +49,7 @@ if __name__ == "__main__" :
 		banned_ips_array=banned_ips_string.split(" ")
 		banned_ips_count=len(banned_ips_array)
 		
-		perf_string="bans='" + str(banned_ips_count) + "'"
+		perf_string="bans=" + str(banned_ips_count) 
 	
 		if banned_ips_count > CRIT :
 			# Critical
