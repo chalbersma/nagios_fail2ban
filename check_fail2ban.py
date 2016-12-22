@@ -59,7 +59,7 @@ if __name__ == "__main__" :
 			response="WARNING: Jail " + str(jail) + " Banned " + str(banned_ips_count) + " Potential banning issue. | " + perf_string
 			response_code=1
 		else :
-			response="OK: Jail " + str(jail) + " Banned " + str(banned_ips_count) + " Potential banning issue. | " + perf_string
+			response="OK: Jail " + str(jail) + " Banned " + str(banned_ips_count) + " | " + perf_string
 			response_code=0
 		
 		if VERBOSE:
