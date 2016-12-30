@@ -1,4 +1,4 @@
-p#!/usr/bin/env python3
+#!/usr/bin/env python3
 
 # Checks Fail2Ban in a Nagios Compatible Manner
 # 
