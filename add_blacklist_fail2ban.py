@@ -18,6 +18,7 @@ if __name__ == "__main__" :
 	parser.add_argument("-c", "--critical", help="Over this amount of banned ips is critical (default 50).")
 	parser.add_argument("-w", "--warning", help="Over this amount of banned ips is a warning (default 35).")
 	parser.add_argument("-m", "--max", help="Only add up to x ips (for performance) (default is 9999).")
+	parser.add_argument("-t", "--timeout", help="Timout query to blacklist (default 5s).")
 	parser.add_argument("-j", "--jail", help="Which jail to use (Required).", required=True)
 	args = parser.parse_args()
 
@@ -49,6 +50,11 @@ if __name__ == "__main__" :
 			MAX=int(args.max)
 		else :
 			MAX=9999
+
+		if args.timeout :
+			TIMEOUT=int(args.timeout)
+		else :
+			TIMEOUT=5
 			
 		if VERBOSE:
 			print("Current Settings. crit: ", CRIT, "warn:", WARN, "jail:", jail)
@@ -66,7 +72,7 @@ if __name__ == "__main__" :
 		perf_string="bans=" + str(banned_ips_count)
 
 		# Get Ban List
-		response=requests.get(URL)
+		response=requests.get(URL, timeout=TIMEOUT)
 		blacklist_ips_string=response.text
 		blacklist_ips_array=blacklist_ips_string.split("\n")
 		blacklist_actual=list(filter(None, blacklist_ips_array))
