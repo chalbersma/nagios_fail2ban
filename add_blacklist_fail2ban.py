@@ -72,17 +72,27 @@ if __name__ == "__main__" :
 		perf_string="bans=" + str(banned_ips_count)
 
 		# Get Ban List
-		response=requests.get(URL, timeout=TIMEOUT)
-		blacklist_ips_string=response.text
-		blacklist_ips_array=blacklist_ips_string.split("\n")
-		blacklist_actual=list(filter(None, blacklist_ips_array))
-		blacklist_actual_count=len(blacklist_actual)
+		try:
+			url_response=requests.get(URL, timeout=TIMEOUT)
+			blacklist_ips_string=url_response.text
+			blacklist_ips_array=blacklist_ips_string.split("\n")
+			blacklist_actual=list(filter(None, blacklist_ips_array))
+			blacklist_actual_count=len(blacklist_actual)
+		except Exception as e:
+			if VERBOSE:
+				print("Error getting blacklist: ", str(e))
+			blacklist_actual = []
+			blacklist_actual_count=len(blacklist_actual)
 
 		perf_string=perf_string + ", blacklist_count=" + str(blacklist_actual_count)
 
 		# Get Missing Blacklists
 		ips_to_ban = [ ip for ip in blacklist_actual if ip not in banned_ips_array ]
 		ips_to_ban_count=len(ips_to_ban)
+
+		if VERBOSE:
+			if ips_to_ban_count > MAX :
+				print("More IPSs to ban than the MAX, limiting IPs at MAX")
 
 		for badip in ips_to_ban[0:MAX] :
 			if VERBOSE:
