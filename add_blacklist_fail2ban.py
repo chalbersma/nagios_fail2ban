@@ -52,7 +52,7 @@ if __name__ == "__main__" :
 	else : 
 		# Worked so Let's Try this stuff
 		# Grab Banned IPs
-		banned_ips_cmd="sudo fail2ban-client status " + jail + " | grep Banned | cut -f 2 -d : | tr ',' ' ' | xargs "
+		banned_ips_cmd="sudo fail2ban-client status " + jail + " | grep Banned | cut -f 2- -d : | tr ',' ' ' | xargs "
 		banned_ips_string=subprocess.check_output([banned_ips_cmd], shell=True, universal_newlines=True).strip("\n")
 		banned_ips_array=banned_ips_string.split(" ")
 		banned_ips_count=len(banned_ips_array)
