@@ -45,9 +45,9 @@ if __name__ == "__main__" :
 		if args.jail :
 			jail=str(args.jail)
 
-		if args.max
+		if args.max :
 			MAX=int(args.max)
-		else
+		else :
 			MAX=9999
 			
 		if VERBOSE:
