@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+p#!/usr/bin/env python3
 
 # Checks Fail2Ban in a Nagios Compatible Manner
 # 
@@ -64,7 +64,7 @@ if __name__ == "__main__" :
 		blacklist_ips_string=response.text
 		blacklist_ips_array=blacklist_ips_string.split("\n")
 		blacklist_actual=list(filter(None, blacklist_ips_array))
-		blacklist_actutal_count=len(blacklist_actual)
+		blacklist_actual_count=len(blacklist_actual)
 
 		perf_string=perf_string + ", blacklist_count=" + str(blacklist_actual_count)
 
