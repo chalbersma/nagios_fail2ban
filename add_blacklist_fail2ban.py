@@ -66,7 +66,7 @@ if __name__ == "__main__" :
 		blacklist_actual=list(filter(None, blacklist_ips_array))
 		blacklist_actutal_count=len(blacklist_actual)
 
-		perf_string=perf_string + ", blacklist_count=" + str(blacklist_actual)
+		perf_string=perf_string + ", blacklist_count=" + str(blacklist_actual_count)
 
 		# Get Missing Blacklists
 		ips_to_ban = [ ip for ip in blacklist_actual if ip not in banned_ips_array ]
