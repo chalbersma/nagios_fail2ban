@@ -73,7 +73,9 @@ if __name__ == "__main__" :
 		ips_to_ban_count=len(ips_to_ban)
 
 		for badip in ips_to_ban :
-			this_ban_command="sudo fail2ban-client set" + jail + " banip " + badip 
+			if VERBOSE:
+				print("Blocking IP : " , badip)
+			this_ban_command="sudo fail2ban-client set " + jail + " banip " + badip 
 			this_ban_output=subprocess.check_output([this_ban_command], shell=True, universal_newlines=True).strip("\n")
 		
 		perf_string=perf_string+", ips_to_ban=" + str(ips_to_ban_count)
