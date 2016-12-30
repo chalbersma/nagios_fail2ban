@@ -1,0 +1,8 @@
+# Fail2 ban for Blacklist Maint
+# Requires aliases in check_fail2ban_sudoers
+
+Defaults !requiretty 
+
+Cmnd_Alias BLACKLIST_MAINT = /usr/bin/fail2ban-client set * banip *
+                                               
+NAGIOS ALL=(USR_ROOT) NOPASSWD: BLACKLIST_MAINT

@@ -17,6 +17,7 @@ if __name__ == "__main__" :
 	parser.add_argument("-V", "--verbose", action='store_true', help="Be Verbose (breaks Nagios)")
 	parser.add_argument("-c", "--critical", help="Over this amount of banned ips is critical (default 50).")
 	parser.add_argument("-w", "--warning", help="Over this amount of banned ips is a warning (default 35).")
+	parser.add_argument("-m", "--max", help="Only add up to x ips (for performance) (default is 9999).")
 	parser.add_argument("-j", "--jail", help="Which jail to use (Required).", required=True)
 	args = parser.parse_args()
 
@@ -43,6 +44,11 @@ if __name__ == "__main__" :
 
 		if args.jail :
 			jail=str(args.jail)
+
+		if args.max
+			MAX=int(args.max)
+		else
+			MAX=9999
 			
 		if VERBOSE:
 			print("Current Settings. crit: ", CRIT, "warn:", WARN, "jail:", jail)
@@ -72,7 +78,7 @@ if __name__ == "__main__" :
 		ips_to_ban = [ ip for ip in blacklist_actual if ip not in banned_ips_array ]
 		ips_to_ban_count=len(ips_to_ban)
 
-		for badip in ips_to_ban :
+		for badip in ips_to_ban[0:MAX] :
 			if VERBOSE:
 				print("Blocking IP : " , badip)
 			this_ban_command="sudo fail2ban-client set " + jail + " banip " + badip 
